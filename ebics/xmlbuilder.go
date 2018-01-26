@@ -80,7 +80,7 @@ func BuildSEPAXMLFile(sepa model.SEPA) ([]byte, error) {
 
 	// ???
 	otherIdentification := paymentInformation.CreateElement("Id").CreateElement("PrvtId").CreateElement("Othr")
-	otherIdentification.CreateElement("Id").SetText(sepa.Creditor.PrivateID)            // [1..1]
+	otherIdentification.CreateElement("Id").SetText(sepa.Creditor.CreditorID)           // [1..1]
 	otherIdentification.CreateElement("SchmeNm").CreateElement("Prtry").SetText("SEPA") // [1..1]
 
 	for _, debitor := range sepa.Debitors {
