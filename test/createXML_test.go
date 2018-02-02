@@ -14,11 +14,11 @@ func TestCreateXMLFile(t *testing.T) {
 		PaymentInfoID:           "1207838J89H24LYT",
 		RequestedCollectionDate: "2017-12-11",
 		Creditor: model.Creditor{
-			Name:      "R+V ALLGEMEINE VERSICHERUNG AG",
-			PrivateID: "DE6300100000136090",
-			IBAN:      "DE93500604000008512247",
-			BIC:       "GENODEFFXXX",
-			Currency:  "EUR",
+			Name:       "R+V ALLGEMEINE VERSICHERUNG AG",
+			CreditorID: "DE6300100000136090",
+			IBAN:       "DE93500604000008512247",
+			BIC:        "GENODEFFXXX",
+			Currency:   "EUR",
 			PostalAddress: &model.PostalAddress{
 				Country:     "DE",
 				AddressLine: []string{"RAIFFEISENPLATZ 1", "WIESBADEN"},

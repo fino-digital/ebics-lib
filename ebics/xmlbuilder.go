@@ -79,7 +79,7 @@ func BuildSEPAXMLFile(sepa model.SEPA) ([]byte, error) {
 	paymentInformation.CreateElement("ChrgBr").SetText("SLEV") // Calculation of the fee. Code which means that certain rules apply. [0..1]
 
 	// ???
-	otherIdentification := paymentInformation.CreateElement("Id").CreateElement("PrvtId").CreateElement("Othr")
+	otherIdentification := paymentInformation.CreateElement("CdtrSchmeId").CreateElement("Id").CreateElement("PrvtId").CreateElement("Othr")
 	otherIdentification.CreateElement("Id").SetText(sepa.Creditor.CreditorID)           // [1..1]
 	otherIdentification.CreateElement("SchmeNm").CreateElement("Prtry").SetText("SEPA") // [1..1]
 
