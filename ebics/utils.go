@@ -2,7 +2,9 @@ package ebics
 
 import (
 	"math/rand"
+	"strconv"
 	"time"
+
 	"github.com/rickar/cal"
 )
 
@@ -87,4 +89,11 @@ func EarliestRequestedCollectionDate(t time.Time) time.Time {
 	}
 
 	return t
+}
+
+func CreateConsecutiveNumber() string {
+	now := time.Now()
+	nano := now.UnixNano()
+
+	return now.Format("20060102") + strconv.FormatInt(nano, 10)
 }

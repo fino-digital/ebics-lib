@@ -40,10 +40,14 @@ func BuildSEPAXMLFile(sepa model.SEPA) ([]byte, error) {
 	groupHeader.CreateElement("InitgPty").CreateElement("Nm").SetText(sepa.InitgPty) // Name of the payee or a party acting on behalf of the payee. [1..1]
 
 	// build payment information
-	paymentInformation := CustomerDirectDebitInitiation.CreateElement("PmtInf")       // [0..n]
-	paymentInformation.CreateElement("PmtInfId").SetText(sepa.PaymentInfoID)          // Reference to uniquely identify the following collector. [1..1]
-	paymentInformation.CreateElement("PmtMtd").SetText("DD")                          // Payment instrument, here debit. [1..1]
-	paymentInformation.CreateElement("BtchBookg").SetText("true")                     // Indicator that states whether it is a collective entry (true) or a single entry (false). [0..1]
+	paymentInformation := CustomerDirectDebitInitiation.CreateElement("PmtInf") // [0..n]
+	paymentInformation.CreateElement("PmtInfId").SetText(sepa.PaymentInfoID)    // Reference to uniquely identify the following collector. [1..1]
+	paymentInformation.CreateElement("PmtMtd").SetText("DD")                    // Payment instrument, here debit. [1..1]
+	if sepa.BatchBook {
+		paymentInformation.CreateElement("BtchBookg").SetText("true")
+	} else {
+		paymentInformation.CreateElement("BtchBookg").SetText("false")
+	}
 	paymentInformation.CreateElement("NbOfTxs").SetText(strconv.Itoa(nbOfTxs))        // Number of individual transactions within the entire message. [1..1]
 	paymentInformation.CreateElement("CtrlSum").SetText(fmt.Sprintf("%.2f", ctrlSum)) // Sum of the amounts of all individual transactions in the entire message. [1..1]
 

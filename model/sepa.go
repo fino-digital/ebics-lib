@@ -4,6 +4,7 @@ type SEPA struct {
 	MsgID                   string    `json:"msgid"` // Point-to-point reference of the instructing party for the next party in the message chain to uniquely identify the message (file). Can be generated with ebics.RestrictedIdentificationSEPA1()
 	InitgPty                string    `json:"initParty"`
 	PaymentInfoID           string    `json:"paymentInfoid"` // Reference to uniquely identify the following collector. Can be generated with ebics.RestrictedIdentificationSEPA1()
+	BatchBook               bool      `json:"batchbook"`     // Indicator that states whether it is a collective entry (true) or a single entry (false). [0..1]
 	Creditor                Creditor  `json:"creditor"`
 	Debitors                []Debitor `json:"debitor"`
 	RequestedCollectionDate string    `json:"RequestedDate,omitempty"`

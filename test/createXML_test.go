@@ -12,6 +12,7 @@ func TestCreateXMLFile(t *testing.T) {
 		MsgID:                   "MCSPAD171207X6TZ7LC47Y83",
 		InitgPty:                "R+V ALLGEMEINE VERSICHERUNG AG",
 		PaymentInfoID:           "1207838J89H24LYT",
+		BatchBook:               true,
 		RequestedCollectionDate: "2017-12-11",
 		Creditor: model.Creditor{
 			Name:       "R+V ALLGEMEINE VERSICHERUNG AG",

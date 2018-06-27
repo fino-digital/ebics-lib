@@ -1,6 +1,7 @@
 package test
 
 import (
+	"log"
 	"regexp"
 	"testing"
 
@@ -16,4 +17,9 @@ func TestGenerateRestrictedIDSEPA1(t *testing.T) {
 	if !re.Match([]byte(id)) {
 		t.Fatal("Don't match")
 	}
+}
+
+func TestGenerateConsecutiveNumber(t *testing.T) {
+	log.Println(ebics.CreateConsecutiveNumber())
+	log.Println(ebics.CreateConsecutiveNumber())
 }
